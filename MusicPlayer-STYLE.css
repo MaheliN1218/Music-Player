@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+}
+.container{
+   width: 100%;
+    height: 100vh;
+    background: #333;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+   
+    margin-bottom: 30px;
+}
+
+.music-player{
+    background: #8aafde;
+    width: 400px;
+    padding: 25px 35px;
+    text-align: center;
+}
+nav .circle{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #32659b;
+    
+    color:#b3dfa2;
+    
+    box-shadow: 0 5px 10px rgba(128, 146, 41, 0.2);
+}
+
+.song-img{
+    width: 220px;
+    border-radius:50%;
+    border:8px solid #ffffff;
+    box-shadow: 0 10px 60px rgba(128, 146, 41, 0.2);
+
+}
+.music-player {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
+
+
+.music-player h1{
+    font-size: 20px;
+    font-weight: 400;
+    color: #0e2741;
+    margin: 20px 0 10px;
+}
+
+.music-player p{
+    font-size: 14px;
+    color: #32659b;
+    margin-bottom: 20px;
+}
+#volume-control{
+    -webkit-appearance: none;
+    width: 100%;
+    height:6px;
+    background:#32659b;
+    border-radius: 4px;
+    cursor: pointer;
+    margin:40px 0;
+
+} 
+
+#volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width:30px;
+    height: 30px;
+    background:#32659b ;
+    border:8px solid  #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(128, 146, 41, 0.2);
+
+
+}
+
+.controls{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.controls div{
+    display: inline-flex ;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(128, 146, 41, 0.2);
+    background: #ffffff;
+    margin: 20px;
+    width: 60px;
+    height: 60px;
+    color: #32659b;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.controls div:nth-child(2){
+    
+    transform:scale(1.5);
+    color:  #ffffff; 
+    background:#32659b; 
+}

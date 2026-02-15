@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music Player</title>
+    <link rel="stylesheet" href="MusicPlayer-style.css">
+    <script src="https://kit.fontawesome.com/2fd427b305.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </div>
+                 <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+
+                </div>
+            </nav>
+            <img class="song-img">
+            <h1>Riptide</h1>
+            <p> Vance Joy</p>
+
+            <audio  id="song"></audio>
+            <input type="range" id="volume-control" >
+
+            <div class="controls">
+                <div onclick="prevSong()"><i class="fa-solid fa-backward"></i></div>
+
+                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                <div onclick="nextSong()"><i class="fa-solid fa-forward"></i></div>
+
+
+
+            </div>
+
+        </div>
+        
+    </div> 
+
+<script>
+    let volumeControl = document.getElementById('volume-control');
+    let song = document.getElementById('song');
+    let ctrlIcons = document.getElementById('ctrlIcon');
+
+song.addEventListener("loadedmetadata", function() {
+    volumeControl.max = song.duration;
+});
+
+song.addEventListener("timeupdate", function() {
+    volumeControl.value = song.currentTime;
+});
+
+
+    function playPause(){
+        if(ctrlIcons.classList.contains('fa-pause')){
+            song.pause();
+            ctrlIcons.classList.remove('fa-pause');
+            ctrlIcons.classList.add('fa-play');
+        }
+        else{
+            song.play();
+            ctrlIcons.classList.remove('fa-play');
+            ctrlIcons.classList.add('fa-pause');    
+        }
+    }
+
+    volumeControl.onchange = function(){
+        song.play();
+        song.currentTime = volumeControl.value;
+        ctrlIcons.classList.remove('fa-play');
+        ctrlIcons.classList.add('fa-pause');    
+    }   
+    let songs = [
+    {
+        title: "Riptide",
+        artist: "Vance Joy",
+        src: "songsCover/3_Vance_Joy-Riptide.mp3",
+        cover: "songsCover/Screenshot 2026-02-15 140042.png"
+    },
+    {
+        title: "Delicate",
+        artist: "Taylor Swift",
+        src: "songsCover/Taylor Swift - Delicate tCXGJQYZ9JA.m4a",
+        cover: "songsCover/Rep.png"
+    },
+    {
+        title: "Stressed Out",
+        artist: "Twenty One Pilots",
+        src: "songsCover/Twenty One Pilots - Stressed Out(128)-1.mp3",
+        cover: "songsCover/21Pilot.png"
+    }
+];
+
+let currentSongIndex = 0;
+
+function loadSong(index) {
+    song.src = songs[index].src;
+    document.querySelector("h1").textContent = songs[index].title;
+    document.querySelector("p").textContent = songs[index].artist;
+    document.querySelector(".song-img").src = songs[index].cover;
+}
+
+function nextSong() {
+    currentSongIndex++;
+
+    if (currentSongIndex >= songs.length) {
+        currentSongIndex = 0;
+    }
+
+    loadSong(currentSongIndex);
+    song.play();
+    ctrlIcons.classList.remove('fa-play');
+    ctrlIcons.classList.add('fa-pause');
+}
+
+function prevSong() {
+    currentSongIndex--;
+
+    if (currentSongIndex < 0) {
+        currentSongIndex = songs.length - 1;
+    }
+
+    loadSong(currentSongIndex);
+    song.play();
+    ctrlIcons.classList.remove('fa-play');
+    ctrlIcons.classList.add('fa-pause');
+}
+
+loadSong(currentSongIndex);
+
+
+</script>
+
+</body>
+</html>
